@@ -47,7 +47,7 @@ public class ArchiveUtil {
 
                 // Validate against potentially malicious zip payload
                 // https://vulncat.fortify.com/en/detail?id=desc.controlflow.java.path_manipulation_zip_entry_overwrite
-                if (!file.getCanonicalPath().startsWith(directory.getCanonicalPath())) {
+                if (!file.getCanonicalFile().toPath().startsWith(directory.getCanonicalFile().toPath())) {
                     throw new IOException("The archive contains an entry that would be extracted outside of the target directory.");
                 }
 
